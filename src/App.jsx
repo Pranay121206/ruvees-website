@@ -232,6 +232,9 @@ export default function RuVeesWebsite() {
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:72px}
         .grid-bg{background-image:linear-gradient(rgba(37,99,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,255,0.05) 1px,transparent 1px);background-size:64px 64px}
 
+        /* ── Hero logo badge ── */
+        .hero-logo-badge{position:absolute;top:90px;left:6%;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(7,13,30,0.6);border:1px solid rgba(37,99,255,0.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:16px;padding:12px 20px}
+
         /* ── Sections ── */
         section{scroll-margin-top:72px}
         .section-pad{padding:110px 6%}
@@ -262,10 +265,18 @@ export default function RuVeesWebsite() {
         /* ── Tech grid ── */
         .tech-card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:44px 24px}
 
-        /* ── Contact ── */
-        .contact-row{display:flex;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-        .contact-row:last-child{border-bottom:none}
-        .contact-icon-box{width:48px;height:48px;border-radius:14px;background:rgba(37,99,255,0.1);border:1px solid rgba(37,99,255,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+        /* ── Contact redesign ── */
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px}
+        .contact-item{border-radius:18px;padding:28px 26px;border:1px solid rgba(37,99,255,0.15);background:rgba(255,255,255,0.02);transition:all .3s;cursor:default;position:relative;overflow:hidden}
+        .contact-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2563FF,#06B6D4);opacity:0;transition:opacity .3s}
+        .contact-item:hover{border-color:rgba(37,99,255,0.35);background:rgba(37,99,255,0.04);transform:translateY(-4px)}
+        .contact-item:hover::before{opacity:1}
+        .contact-item-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(37,99,255,0.18),rgba(6,182,212,0.09));border:1px solid rgba(37,99,255,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+        .contact-item-label{font-size:10.5px;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:6px}
+        .contact-item-value{font-size:15px;color:#E2E8F0;font-weight:500;line-height:1.45}
+        .contact-cta-row{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(37,99,255,0.1),rgba(6,182,212,0.06));border:1px solid rgba(37,99,255,0.18);border-radius:18px;padding:22px 28px;margin-bottom:32px}
+        .contact-cta-left{font-size:14px;color:#94A3B8;font-weight:300;line-height:1.6}
+        .contact-cta-left strong{color:#E2E8F0;font-weight:600;display:block;font-size:16px;margin-bottom:4px}
 
         /* ── Footer ── */
         .footer{border-top:1px solid rgba(37,99,255,0.1);padding:36px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
@@ -289,12 +300,16 @@ export default function RuVeesWebsite() {
           .nav-links,.nav-cta-desktop{display:none!important}
           .hamburger{display:flex}
           .section-pad{padding:80px 5%}
+          .contact-grid{grid-template-columns:1fr}
+          .contact-cta-row{flex-direction:column;gap:18px;text-align:center}
+          .hero-logo-badge{display:none}
         }
         @media(max-width:560px){
           .grid-4-tight{grid-template-columns:1fr 1fr}
           .footer{flex-direction:column;text-align:center}
           .bsmart-col{padding:28px 22px}
           .hero h1{font-size:36px!important}
+          .contact-grid{grid-template-columns:1fr}
         }
       `}</style>
 
@@ -347,26 +362,33 @@ export default function RuVeesWebsite() {
         <GlowOrb style={{ width: 550, height: 550, bottom: "-5%", right: "-10%", background: "radial-gradient(circle,rgba(139,92,246,0.18) 0%,transparent 70%)", animation: "glow-pulse 6s ease-in-out infinite 1s" }} />
         <GlowOrb style={{ width: 320, height: 320, top: "40%", left: "42%", background: "radial-gradient(circle,rgba(6,182,212,0.12) 0%,transparent 70%)", animation: "glow-pulse 4s ease-in-out infinite .5s" }} />
 
-        <div style={{ textAlign: "center", padding: "0 24px", maxWidth: 900, position: "relative", zIndex: 2 }}>
-          {/* Logo */}
-          <div className="float-anim" style={{ marginBottom: 36 }}>
-            <div style={{ position: "relative", display: "inline-block" }}>
-              <div style={{
-                position: "absolute", inset: -20,
-                background: "radial-gradient(circle,rgba(37,99,255,0.35) 0%,transparent 70%)",
-                borderRadius: "50%", filter: "blur(24px)",
-                animation: "glow-pulse 3s ease-in-out infinite",
-              }} />
-              <img
-                src={INFINITY_LOGO}
-                alt="RuVees"
-                style={{
-                  width: 160, height: 104, objectFit: "contain", position: "relative", zIndex: 1,
-                  filter: "drop-shadow(0 0 28px rgba(37,99,255,0.8)) drop-shadow(0 0 56px rgba(139,92,246,0.5)) brightness(1.1)",
-                }}
-              />
-            </div>
+        {/* ── Logo badge — top-left corner of hero ── */}
+        <div className="hero-logo-badge fade-in">
+          <div style={{ position: "relative" }}>
+            <div style={{
+              position: "absolute", inset: -8,
+              background: "radial-gradient(circle,rgba(37,99,255,0.4) 0%,transparent 70%)",
+              borderRadius: "50%", filter: "blur(10px)",
+              animation: "glow-pulse 3s ease-in-out infinite",
+            }} />
+            <img
+              src={INFINITY_LOGO}
+              alt="RuVees"
+              style={{
+                width: 52, height: 34, objectFit: "contain", position: "relative", zIndex: 1,
+                filter: "drop-shadow(0 0 12px rgba(37,99,255,0.9)) drop-shadow(0 0 24px rgba(139,92,246,0.5)) brightness(1.1)",
+              }}
+            />
           </div>
+          <div>
+            <div style={{ fontFamily: "'Sora',sans-serif", fontWeight: 800, fontSize: 17, letterSpacing: ".3px", lineHeight: 1 }}>
+              <span className="gradient-text">RuVees</span>
+            </div>
+            <div style={{ fontSize: 8, letterSpacing: "2px", color: "#475569", fontWeight: 600, textTransform: "uppercase", marginTop: 3 }}>IT SOLUTIONS</div>
+          </div>
+        </div>
+
+        <div style={{ textAlign: "center", padding: "0 24px", maxWidth: 900, position: "relative", zIndex: 2 }}>
 
           <div className="pill slide-up">✦ AI-Powered Platform</div>
 
@@ -623,25 +645,33 @@ export default function RuVeesWebsite() {
             Have a project in mind or want to learn more? Reach out and let's create something extraordinary.
           </p>
 
-          <GlassCard style={{ padding: "40px 44px", marginBottom: 36, border: "1px solid rgba(37,99,255,0.15)", textAlign: "left" }}>
+          {/* ── Redesigned contact cards ── */}
+          <div className="contact-grid">
             {[
-              { label: "Email", value: "info@ruvees.com", icon: "📧" },
-              { label: "Location", value: "India", icon: "📍" },
-              { label: "Phone", value: "+91-XXXXXXXXXX", icon: "📱" },
+              { label: "Email", value: "info@ruvees.com", icon: "📧", sub: "We reply within 24 hours" },
+              { label: "Location", value: "India", icon: "📍", sub: "Available globally" },
+              { label: "Phone", value: "+91-XXXXXXXXXX", icon: "📱", sub: "Mon – Sat, 9 AM – 7 PM" },
+              { label: "Support", value: "24 / 7 Online", icon: "💬", sub: "Always here to help" },
             ].map(c => (
-              <div key={c.label} className="contact-row">
-                <div className="contact-icon-box">{c.icon}</div>
-                <div>
-                  <div style={{ fontSize: 11, color: "#475569", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.2px" }}>{c.label}</div>
-                  <div style={{ fontSize: 15.5, color: "#E2E8F0", fontWeight: 500, marginTop: 2 }}>{c.value}</div>
-                </div>
+              <div key={c.label} className="contact-item" style={{ textAlign: "left" }}>
+                <div className="contact-item-icon">{c.icon}</div>
+                <div className="contact-item-label">{c.label}</div>
+                <div className="contact-item-value">{c.value}</div>
+                <div style={{ fontSize: 12, color: "#475569", marginTop: 5, fontWeight: 300 }}>{c.sub}</div>
               </div>
             ))}
-          </GlassCard>
+          </div>
 
-          <button className="btn-primary" style={{ fontSize: 16, padding: "17px 52px" }}>
-            Get In Touch →
-          </button>
+          {/* ── CTA strip ── */}
+          <div className="contact-cta-row">
+            <div className="contact-cta-left">
+              <strong>Ready to get started?</strong>
+              Drop us a message and our team will connect with you shortly.
+            </div>
+            <button className="btn-primary" style={{ fontSize: 15, padding: "15px 40px", flexShrink: 0 }}>
+              Get In Touch →
+            </button>
+          </div>
         </div>
       </section>
 
