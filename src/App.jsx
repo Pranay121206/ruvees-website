@@ -302,7 +302,7 @@ export default function RuVeesWebsite() {
           .section-pad{padding:80px 5%}
           .contact-grid{grid-template-columns:1fr}
           .contact-cta-row{flex-direction:column;gap:18px;text-align:center}
-          .hero-logo-badge{display:none}
+          
         }
         @media(max-width:560px){
           .grid-4-tight{grid-template-columns:1fr 1fr}
