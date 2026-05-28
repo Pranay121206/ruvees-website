@@ -82,57 +82,83 @@ export default function HeroSection({ heroLogo, onScrollTo }) {
   return (
     <section id="home" className="hero grid-bg">
       <ParticleCanvas />
+      <div className="hero-wave" />
 
+      <div
+        className="glow-orb"
+        style={{
+          width: 800,
+          height: 800,
+          top: "-20%",
+          left: "-15%",
+          background: "radial-gradient(circle,rgba(37,99,255,0.25) 0%,transparent 70%)",
+          animation: "glow-pulse 6s ease-in-out infinite",
+        }}
+      />
       <div
         className="glow-orb"
         style={{
           width: 700,
           height: 700,
-          top: "-10%",
-          left: "-12%",
-          background: "radial-gradient(circle,rgba(37,99,255,0.2) 0%,transparent 70%)",
-          animation: "glow-pulse 5s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="glow-orb"
-        style={{
-          width: 550,
-          height: 550,
-          bottom: "0%",
-          right: "-8%",
-          background: "radial-gradient(circle,rgba(139,92,246,0.17) 0%,transparent 70%)",
-          animation: "glow-pulse 6s ease-in-out infinite 1.2s",
+          bottom: "-10%",
+          right: "-10%",
+          background: "radial-gradient(circle,rgba(139,92,246,0.2) 0%,transparent 70%)",
+          animation: "glow-pulse 7s ease-in-out infinite 1s",
         }}
       />
 
-      <div className="hero-inner" style={{ paddingBottom: 60, paddingTop: 20 }}>
+      <div className="hero-inner" style={{ paddingBottom: 100, paddingTop: 40 }}>
         <div className="hero-text-side slide-left">
-          <div className="pill slide-up">AI-Powered Platform</div>
+          <div className="pill slide-up" style={{ background: "rgba(37,99,255,0.08)", borderColor: "rgba(37,99,255,0.2)", marginBottom: 30 }}>
+            AI-POWERED PLATFORM
+          </div>
           <h1
             className="slide-up-1"
             style={{
               fontFamily: "'Sora',sans-serif",
               fontWeight: 800,
-              fontSize: "clamp(42px,6.2vw,84px)",
-              lineHeight: 1.02,
-              marginBottom: 26,
-              letterSpacing: "-2.5px",
+              fontSize: "clamp(50px,7.5vw,100px)",
+              lineHeight: 0.9,
+              marginBottom: 10,
+              letterSpacing: "-4px",
+              display: "flex",
+              flexDirection: "column"
             }}
           >
-            <span style={{ color: "#F8FAFC" }}>Smart Advertising.</span>
-            <br />
-            <span className="shimmer-text">Real Rewards.</span>
+            <span style={{ color: "#FFFFFF" }}>Smart</span>
+            <span style={{ 
+              background: "linear-gradient(90deg, #2563FF, #8B5CF6, #D946EF)", 
+              WebkitBackgroundClip: "text", 
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
+            }}>
+              Advertising.
+            </span>
           </h1>
+          
+          <div 
+            className="slide-up-1" 
+            style={{ 
+              color: "#38BDF8", 
+              fontSize: "clamp(18px,2.2vw,26px)", 
+              fontWeight: 500, 
+              marginBottom: 32,
+              letterSpacing: "0.5px"
+            }}
+          >
+            Real Rewards.
+          </div>
+
           <p
             className="slide-up-2"
             style={{
-              fontSize: "clamp(15px,1.8vw,18.5px)",
+              fontSize: "clamp(16px,1.8vw,19px)",
               color: "#94A3B8",
-              maxWidth: 580,
-              lineHeight: 1.8,
+              maxWidth: 600,
+              lineHeight: 1.6,
               fontWeight: 300,
-              marginBottom: 42,
+              marginBottom: 48,
+              opacity: 0.8
             }}
           >
             RuVees IT Solutions builds AI-driven platforms that transform how
@@ -156,36 +182,36 @@ export default function HeroSection({ heroLogo, onScrollTo }) {
           <div className="hero-logo-glow">
             <div
               className="hero-logo-ring"
-              style={{ width: 480, height: 480, animationDelay: "0s" }}
+              style={{ width: 700, height: 700, animationDelay: "0s" }}
             />
             <div
               className="hero-logo-ring"
-              style={{ width: 590, height: 590, animationDelay: ".7s", opacity: 0.1 }}
+              style={{ width: 880, height: 880, animationDelay: ".7s", opacity: 0.1 }}
             />
             <div
               className="hero-logo-ring"
-              style={{ width: 700, height: 700, animationDelay: "1.4s", opacity: 0.05 }}
+              style={{ width: 1050, height: 1050, animationDelay: "1.4s", opacity: 0.05 }}
             />
 
             <div
               style={{
                 position: "absolute",
-                width: 380,
-                height: 280,
+                width: 650,
+                height: 480,
                 background:
-                  "radial-gradient(ellipse,rgba(37,99,255,0.42) 0%,transparent 70%)",
-                filter: "blur(55px)",
+                  "radial-gradient(ellipse,rgba(37,99,255,0.5) 0%,transparent 70%)",
+                filter: "blur(100px)",
                 animation: "glow-pulse 3.5s ease-in-out infinite",
               }}
             />
             <div
               style={{
                 position: "absolute",
-                width: 260,
-                height: 200,
+                width: 500,
+                height: 380,
                 background:
-                  "radial-gradient(ellipse,rgba(139,92,246,0.28) 0%,transparent 70%)",
-                filter: "blur(45px)",
+                  "radial-gradient(ellipse,rgba(139,92,246,0.38) 0%,transparent 70%)",
+                filter: "blur(85px)",
                 animation: "glow-pulse 4s ease-in-out infinite 0.8s",
               }}
             />
@@ -195,12 +221,12 @@ export default function HeroSection({ heroLogo, onScrollTo }) {
               alt="RuVees Infinity"
               className="float-anim"
               style={{
-                width: "clamp(400px,52vw,680px)",
+                width: "clamp(600px,70vw,1000px)",
                 objectFit: "contain",
                 position: "relative",
                 zIndex: 2,
                 filter:
-                  "drop-shadow(0 0 60px rgba(37,99,255,0.9)) drop-shadow(0 0 120px rgba(139,92,246,0.6)) brightness(1.2)",
+                  "drop-shadow(0 0 100px rgba(37,99,255,1)) drop-shadow(0 0 180px rgba(139,92,246,0.7)) brightness(1.3)",
               }}
             />
           </div>

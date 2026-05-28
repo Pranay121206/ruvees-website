@@ -10,7 +10,7 @@ import StatsSection from "./components/stats-section";
 import TechnologySection from "./components/technology-section";
 import VisionSection from "./components/vision-section";
 
-const HERO_LOGO = "/logo.png";
+const HERO_LOGO = "/loopimage.png";
 const MAIN_LOGO = "/main-logo.png";
 
 const NAV_LINKS = ["Home", "About", "Services", "Products", "Technology", "Vision", "Contact"];
@@ -93,10 +93,10 @@ export default function RuVeesWebsite() {
         .gradient-text{background:linear-gradient(135deg,#2563FF,#8B5CF6,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         .shimmer-text{background:linear-gradient(90deg,#2563FF 0%,#8B5CF6 30%,#06B6D4 60%,#2563FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
         .cyan-label{color:#06B6D4;font-weight:600;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
-        .btn-primary{background:linear-gradient(90deg,#2563FF,#06B6D4);color:#fff;border:none;border-radius:50px;padding:14px 34px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14.5px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 28px rgba(37,99,255,0.45);letter-spacing:.3px;white-space:nowrap}
-        .btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 44px rgba(37,99,255,0.65)}
-        .btn-secondary{background:transparent;color:#F3F4F6;border:1.5px solid rgba(37,99,255,0.45);border-radius:50px;padding:13px 32px;font-family:'Poppins',sans-serif;font-weight:500;font-size:14.5px;cursor:pointer;transition:all .3s;white-space:nowrap}
-        .btn-secondary:hover{border-color:#06B6D4;color:#06B6D4;transform:translateY(-3px)}
+        .btn-primary{background:linear-gradient(90deg,#2563FF,#06B6D4);color:#fff;border:none;border-radius:50px;padding:16px 38px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 32px rgba(37,99,255,0.5);letter-spacing:.3px;white-space:nowrap;position:relative;overflow:visible}
+        .btn-primary:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 15px 45px rgba(37,99,255,0.7)}
+        .btn-secondary{background:rgba(255,255,255,0.03);color:#F3F4F6;border:1px solid rgba(255,255,255,0.1);border-radius:50px;padding:15px 36px;font-family:'Poppins',sans-serif;font-weight:500;font-size:15px;cursor:pointer;transition:all .3s;white-space:nowrap;backdrop-filter:blur(10px)}
+        .btn-secondary:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);transform:translateY(-4px)}
         .card-hover{transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
         .card-hover:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(37,99,255,0.18)}
 
@@ -138,8 +138,10 @@ export default function RuVeesWebsite() {
         .nav-main-cta{padding:11px 22px;font-size:13px;box-shadow:0 10px 28px rgba(37,99,255,0.35)}
 
         /* ── HERO ── */
-        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
-        .grid-bg{background-image:linear-gradient(rgba(37,99,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,255,0.04) 1px,transparent 1px);background-size:64px 64px}
+        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px;background:#050a18}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:300px;background:radial-gradient(ellipse at bottom, rgba(37,99,255,0.15) 0%, transparent 70%);pointer-events:none;z-index:1}
+        .hero-wave{position:absolute;bottom:0;left:0;width:100%;height:120px;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(37,99,255,0.05)" d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,165.3C960,181,1056,171,1152,149.3C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');background-size:cover;background-position:center;z-index:1;opacity:0.6}
+        .grid-bg{background-image:linear-gradient(rgba(37,99,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,255,0.03) 1px,transparent 1px);background-size:64px 64px}
         .hero-inner{max-width:1240px;width:100%;margin:0 auto;padding:0 var(--pad-x) 0;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:2}
 
         /* logo side — centered, large */
